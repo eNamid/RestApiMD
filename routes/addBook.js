@@ -4,16 +4,16 @@ const Book = require('../component/models/Books');
 module.exports = async (req, res) => {
     const book = new Book(req.body);
     book.title = req.body.title;
-    book.year = req.body.year;
     book.author = req.body.author;
     book.genre = req.body.genre;   
-     
+    book.dbook = req.body.dbook;
+    
     try {
         book.save();
-        res.json(book);
+        res.sendStatus(200);
     }
     catch(err){
         console.log(err);
-        res.status(500);
+        res.sendStatus(500);
     }
 }

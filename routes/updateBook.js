@@ -3,6 +3,7 @@ const Book = require('../component/models/Books');
 
 module.exports = async (req, res) => {
     
+    const __id = req.params.id;
     const { 
         title,
         author,
@@ -10,11 +11,13 @@ module.exports = async (req, res) => {
     } = req.body;
 
     try {
-        const book = await Book.find({$or: [
-            { title: title },
-            { author: author },
-            { genre: genre }
-        ]});
+        const book = await Book.updateOne({
+            id: __id,
+    }, {
+            title: title,
+            author: author,
+            genre: genre
+    });
 
         res.json(book);
     }

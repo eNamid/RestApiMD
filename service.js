@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.post('/addBook', require('./routes/addBook'));
 app.get('/getBook', require('./routes/getBook'));
 app.put('/updateBook/:id', require('./routes/updateBook'));
+app.delete('/delBook/:id', require('./routes/delBook'));
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is starting in port: ${process.env.PORT}`);

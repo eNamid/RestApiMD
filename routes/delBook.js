@@ -3,23 +3,13 @@ const Book = require('../component/models/Books');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = async (req, res) => {
-    
-    const { 
-        title,
-        author,
-        genre
-    } = req.body;
 
     try {
-        await Book.updateOne({
+        await Book.deleteOne({
 
             _id: new ObjectId(`${req.params.id}`)
 
-    }, {$set: {
-            title: title,
-            author: author,
-            genre: genre
-    }});
+        });
 
         res.sendStatus(200);
     }
